@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
 {% block body %}
-    Olá, mundo
 
-    {% for number in "123456" %}
-        <div style="color: {% if forloop.first %} red {% else %} blue {% endif %};
-        border: 1px solid black;">
-            {% include "includes/card.html" with content="Tenho fome" author="Pam" %}
-        </div>
-        {% endfor %}
+        {% for tuite in tuites %}
+            <div>
+                {{tuite.author }}: {{ tuite.content }}
+            </div>
+        {% endfor %}      
 
 {% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    {% if error %}
+    <p> {{ error }} </p>
+    {% endif %}
+
+    {% if success_message %}
+    <p> {{ success_message }} </p>
+    {% endif %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        <input name="content" placeholder="o que você está pensando?">
+        <input type="submit" value="Postar tuite">
+    </form>
+   
+    {% if error %}
+    <script>
+        alert('{{ error }}');
+    </script>
+    {% endif %}
+
+{% endblock %}
