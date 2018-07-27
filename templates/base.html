@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,600i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'icon/fav-icon.png' %}">
+    <title>Tuirer</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-title">
+                <img src="{% static 'icon/icon.png' %}">
+                <span>Tuirer</span>               
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+    <footer class="footer">
+        <div class="footer-copyright">
+            Copyright @ 2018 Pamella Bezerra
+        </div> 
+        <div class="footer-made">
+            Made with
+            <i class="fas fa-code"></i>
+            and
+            <i class="far fa-heart"></i>
+            by Pamella Bezerra
+        </div>
+    </footer>
+
+</body>
+</html>
