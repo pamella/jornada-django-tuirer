@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'tuites',
-    'users'
+    'users',
+
+    # 3rd party
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +88,7 @@ DATABASES = {
 
 # Users
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = 'index'     # view para login do usuário
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
