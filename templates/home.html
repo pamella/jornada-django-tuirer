@@ -2,10 +2,12 @@
 
 {% block body %}
 
+    {% include "includes/message.html" %}
+
+    <div class="cards">
         {% for tuite in tuites %}
-            <div>
-                {{tuite.author }}: {{ tuite.content }}
-            </div>
-        {% endfor %}      
+            {% include 'includes/card.html' %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

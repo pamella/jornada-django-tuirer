@@ -3,4 +3,4 @@ from django.db import models
 
 # Create your models here.
 class User(AbstractUser):
-    pass
+    picture = models.ImageField('Foto de perfil', default='img/blank-pic.png')
