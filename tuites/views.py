@@ -13,7 +13,7 @@ class PostTuiteView(LoginRequiredMixin, CreateView):
     template_name = 'post_tuite.html'
     form_class = PostTuiteForm
     # reverse_lazy só será chamado 
-    success_url = reverse_lazy('post_tuite')
+    success_url = reverse_lazy('tuites:post_tuite')
 
     def get_initial(self):
         return {
@@ -27,25 +27,3 @@ class PostTuiteView(LoginRequiredMixin, CreateView):
             'Você postou um tuite!'
         )
         return super().form_valid(form)
-
-
-# código abaixo não utilizado:
-
-def post_tuite(request):
-    context = {}
-
-    if request.method == 'POST':
-        print('Enviando formulário!')
-        # print(request.POST)
-        # content name do input do form
-        content = request.POST.get('content', None)
-        if content.isspace() or content == '':
-            context['error'] = 'Tuite não pode estar vazio'
-        else:
-            tuite = Tuite.objects.create(
-                content=content,
-                author=request.user,
-            )
-            context['success_message'] = f'Seu Tuite de conteúdo {tuite.content} foi enviado'
-
-    return render(request, 'post_tuite.html', context)

@@ -1,3 +1,25 @@
+/* menu */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.menu__link {
+    text-decoration: none;
+    color: #ff6600;
+}
+
+
+/* login */
+.login {
+    display: flex;
+    flex-direction: column;
+}
+
+
 /* post_tuite  */
 .post-tuite-field {
     color: #ff6600;
@@ -18,9 +40,8 @@
     padding: 20px 30px;
     margin-bottom: 15px;
     background-color: white;
-    /* border: 1px solid #404040; */
     border-radius: 5px;
-    box-shadow: 1px 2px 2px #cccccc;
+    box-shadow: -2px 0px 9px -3px gray;
 }
 
 

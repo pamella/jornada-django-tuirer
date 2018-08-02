@@ -1,7 +1,11 @@
-<nav>
-    <a href="{% url 'index' %}">Início</a>
-    <a href="{% url 'post_tuite' %}">Postar Tuite</a>
+<nav class="menu">
+    <a class="menu__link" href="{% url 'index' %}">Início</a>
+    {% comment %} {% url 'app_name:name' %} {% endcomment %}
+    <a class="menu__link" href="{% url 'tuites:post_tuite' %}">Postar Tuite</a>
     {% if request.user.is_authenticated %}
-        <a href="{% url 'profile' request.user.pk %}" class="redirect">Olá, {{ request.user.username }}</a>
+        <a class="menu__link" href="{% url 'users:profile' request.user.pk %}" class="redirect">Olá, <b>{{ user.username }}</b></a>
+        <a class="menu__link" href="{% url 'users:logout' %}">Sair</a>
+    {% else %}
+        <a class="menu__link" href="{% url 'users:login' %}">Entrar</a>
     {% endif %}
 </nav>
