@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, RedirectView
 
 from tuites.forms import PostTuiteForm
 from tuites.models import Tuite
@@ -27,3 +27,19 @@ class PostTuiteView(LoginRequiredMixin, CreateView):
             'Você postou um tuite!'
         )
         return super().form_valid(form)
+
+
+class LikeTuiteView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        from_url = self.request.META.get('HTTP_REFERER')
+        tuite_pk = kwargs.get('pk')
+        user = self.request.user
+        
+        tuite = Tuite.objects.get(pk=tuite_pk)
+        # como o model é manytomany, podemos ter o filtro seguinte:
+        if tuite.liked_by.filter(pk=user.pk).exists():
+            tuite.liked_by.remove(user)
+        else:
+            tuite.liked_by.add(user)
+
+        return f'{from_url}#{tuite_pk}'

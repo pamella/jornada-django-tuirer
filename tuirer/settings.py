@@ -88,7 +88,7 @@ DATABASES = {
 
 # Users
 AUTH_USER_MODEL = 'users.User'
-LOGIN_URL = 'index'     # view para login do usuário quanto ele tenta postar sem estar logado
+LOGIN_URL = 'users:login'     # view para login do usuário quanto ele tenta postar sem estar logado
 LOGIN_REDIRECT_URL = 'tuites:post_tuite'
 LOGOUT_REDIRECT_URL = 'index'
 
