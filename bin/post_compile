@@ -1,28 +1,12 @@
 #!/usr/bin/env bash
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-echo "-----> Running post-compile hook"
-
->>>>>>> 0d4bcb381352ac9b838773d7590baaf04ea10a1e
->>>>>>> ad5c826763eb74bc66340ef8c397c96e7402eb02
 if [ -n "$MIGRATE" ] && [ "$MIGRATE" == 1 ]; then
     echo "-----> Running python manage.py migrate"
     python manage.py migrate --noinput
     echo "-----> It finished migrating"
 fi
 
-<<<<<<< HEAD
 if [ -n "$COLLECTSTATIC" ] && [ "$COLLECTSTATIC" == 1 ]; then
-=======
-<<<<<<< HEAD
-if [ -n "$COLLECTSTATIC" ] && [ "$COLLECTSTATIC" == 1 ]; then
-=======
-if [ -n "$COLLECTSTATIC" ] && [ "$AUTO_MIGRATE" == 1 ]; then
->>>>>>> 0d4bcb381352ac9b838773d7590baaf04ea10a1e
->>>>>>> ad5c826763eb74bc66340ef8c397c96e7402eb02
     echo "-----> Running python manage.py collectstatic"
     python manage.py collectstatic --noinput
     echo "-----> It finished collecting static files"
