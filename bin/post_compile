@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo "-----> Running post-compile hook"
+
+if [ -n "$MIGRATE" ] && [ "$MIGRATE" == 1 ]; then
+    echo "-----> Running python manage.py migrate"
+    python manage.py migrate --noinput
+    echo "-----> It finished migrating"
+fi
+
+if [ -n "$COLLECTSTATIC" ] && [ "$AUTO_MIGRATE" == 1 ]; then
+    echo "-----> Running python manage.py collectstatic"
+    python manage.py collectstatic --noinput
+    echo "-----> It finished collecting static files"
+fi
