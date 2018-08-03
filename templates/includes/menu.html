@@ -7,5 +7,6 @@
         <a class="menu__link" href="{% url 'users:logout' %}">Sair</a>
     {% else %}
         <a class="menu__link" href="{% url 'users:login' %}">Entrar</a>
+        <a class="menu__link" href="{% url 'users:signup' %}">Cadastro</a>
     {% endif %}
 </nav>
