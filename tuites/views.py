@@ -34,6 +34,9 @@ class LikeTuiteView(RedirectView):
         from_url = self.request.META.get('HTTP_REFERER')
         tuite_pk = kwargs.get('pk')
         user = self.request.user
+
+        if not user.pk:
+            return from_url
         
         tuite = Tuite.objects.get(pk=tuite_pk)
         # como o model é manytomany, podemos ter o filtro seguinte:

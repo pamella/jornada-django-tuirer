@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # torna a variável disponível em qualquer template
+                'tuites.context_processors.eu',
             ],
         },
     },
@@ -145,3 +148,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 DEFAULT_FROM_EMAIL = 'oi@test.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# função que retorna todas as variáveis que estão sendo usadas nesse arquivo
+django_heroku.settings(locals())
