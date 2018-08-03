@@ -1,4 +1,4 @@
 def eu(resquest):
     return {
-        'eu': Pam,
+        'eu': 'Pam',
     }
