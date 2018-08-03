@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -n "$MIGRATE" ] && [ "$MIGRATE" == 1 ]; then
+    echo "-----> Running python manage.py migrate"
+    python manage.py migrate --noinput
+    echo "-----> It finished migrating"
+fi
+
+if [ -n "$COLLECTSTATIC" ] && [ "$COLLECTSTATIC" == 1 ]; then
+    echo "-----> Running python manage.py collectstatic"
+    python manage.py collectstatic --noinput
+    echo "-----> It finished collecting static files"
+fi
