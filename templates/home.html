@@ -5,9 +5,15 @@
     {% include "includes/message.html" %}
 
     <div class="cards">
-        {% for tuite in tuites|slice:":5" %}
+        {% if request.user.is_authenticated %}
+            {% for tuite in tuites %}
             {% include 'includes/card.html' %}
         {% endfor %}
+        {% else %}
+            {% for tuite in tuites|slice:":5" %}
+                {% include 'includes/card.html' %}
+            {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}
