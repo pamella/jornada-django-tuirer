@@ -22,14 +22,6 @@
                         <h2 class="username"> {{ profile.username }} </h2>  
                         <span class="email"> ({{ profile.email }})</span>
                     </div>
-                    <div class="row">
-                        <a href="{% url 'users:profile' request.user.pk %}" class="following">
-                            Seguindo: {{ profile.following_count }}
-                        </a>
-                        <a href="{% url 'users:profile-edit' request.user.pk %}" class="followers">
-                            Seguidores: {{ profile.followers_count }}
-                        </a>
-                    </div>
                     {% if profile != request.user %}
                         <div class="row">
                             <a href="{% url 'users:follow' profile.pk %}" class="follow">
@@ -39,6 +31,33 @@
                     {% endif %}
                 </div>
             </div>
+        </div>
+
+        <div class="profile-follow">
+
+            {% if profile.following_count > 0 %}
+                <p class="title">Seguindo ({{ profile.following_count }})</p>
+                <div class="follow-list">
+                    {% for following in profile.following.all %}
+                        <a href="{% url 'users:profile' following.pk %}" class="follow-card">
+                            <div class="avatar" style="background-image: url('{{ following.picture.url }}');"></div>
+                            {{ following.username }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if profile.followers_count > 0 %}
+                <p class="title">Seguidores ({{ profile.followers_count }})</p>
+                <div class="follow-list">
+                    {% for follower in profile.followers.all %}
+                        <a href="{% url 'users:profile' follower.pk %}" class="follow-card">
+                            <div class="avatar" style="background-image: url('{{ follower.picture.url }}');"></div>
+                            {{ follower.username }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
         
         <div class="profile-tuites">

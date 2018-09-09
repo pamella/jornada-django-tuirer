@@ -101,6 +101,21 @@
     margin-bottom: 0;
 }
 
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 25px;
+    height: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
 .author-and-date, .likes {
     display: flex;
     justify-content: space-between;
@@ -196,4 +211,45 @@
     padding: 5px 10px;
     font-weight: 500;
     margin-top: 15px;
+}
+
+
+.profile-follow {
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px 15%;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+}
+
+.profile-follow .title {
+    font-weight: 500;
+}
+
+.follow-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.follow-card {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-right: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px -2px grey;
+    color: black;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }
