@@ -32,18 +32,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 40px 0;
+    box-sizing: border-box;
     background-color: #f2f2f2;
 }
 
 .card {
     width: 70%;
     padding: 20px 30px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: -2px 0px 9px -3px gray;
 }
 
+.card:last-child {
+    margin-bottom: 0;
+}
+
+.author-and-date, .likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #262626;
+}
+
+.author, .likes-icon {
+    color: #007acc;
+}
 
 /* profile */
 .profile-picture {
