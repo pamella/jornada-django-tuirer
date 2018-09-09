@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class User(AbstractUser):
     picture = models.ImageField('Foto de perfil', default='img/blank-pic.png')
-    following = models.ManyToManyField('self', blank=True)
-    followers = models.ManyToManyField('self', blank=True)
+    following = models.ManyToManyField('self', related_name='following_users', blank=True, symmetrical=False)
+    followers = models.ManyToManyField('self', blank=True, symmetrical=False)
 
     @property
     def following_count(self):
