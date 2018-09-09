@@ -7,18 +7,10 @@
         <form class="login-form" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            
-            {% comment %} {% for field in form %}
-                {% render_field field placeholder=field.label autofocus=True %}
-            {% endfor %} {% endcomment %}
-            
-            <input class="login__button" type="submit" value="Enviar">
+
+            <input class="button" type="submit" value="Enviar">
         </form>
     </div>
-        
-    {% comment %} <div class="login-form">
-        <div class="login__input">Usuário: </div>
-        <div class="login__input">Senha: </div>
-    </div> {% endcomment %}
+
 
 {% endblock body %}

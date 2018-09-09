@@ -1,18 +1,50 @@
 {% extends "base.html" %}
+{% load user_follow %}
 
 {% block body %}
-    <div class="profile-picture" style="background-image: url('{{ profile.picture.url }}');"></div>
-
-    {% if profile == request.user %}
-        <a href="{% url 'users:profile-edit' request.user.pk %}">Editar perfil</a>
-    {% endif %}
-    
-    <h2> {{ profile.username }} </h2>
-    {{ profile.email }}
-
-    {% for tuite in profile.tuites.all %}
-        {% include "includes/card.html" %}
-    {% endfor %}
-
-    {% comment %} {{ profile.tuite_set.all }} {% endcomment %}
+    <div class="profile">
+        <div class="profile-header">
+            {% if profile == request.user %}
+                <p class="your-profile-warning">
+                    Olá, <b>{{ user.username }}</b>, você está visualizando o seu perfil! 
+                </p>
+                <span>
+                    Se quiser,
+                    <a href="{% url 'users:profile-edit' request.user.pk %}" class="profile-edit">edite seu perfil aqui</a>
+                </span>
+            {% endif %}
+            
+            <div class="profile-info-box">
+                <div class="profile-picture" style="background-image: url('{{ profile.picture.url }}');"></div>
+                
+                <div class="profile-info-content">
+                    <div class="row">
+                        <h2 class="username"> {{ profile.username }} </h2>  
+                        <span class="email"> ({{ profile.email }})</span>
+                    </div>
+                    <div class="row">
+                        <a href="{% url 'users:profile' request.user.pk %}" class="following">
+                            Seguindo: {{ profile.following_count }}
+                        </a>
+                        <a href="{% url 'users:profile-edit' request.user.pk %}" class="followers">
+                            Seguidores: {{ profile.followers_count }}
+                        </a>
+                    </div>
+                    {% if profile != request.user %}
+                        <div class="row">
+                            <a href="{% url 'users:follow' profile.pk %}" class="follow">
+                                {% follow %}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tuites">
+            {% for tuite in profile.tuites.all %}
+                {% include "includes/card.html" %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock body %}

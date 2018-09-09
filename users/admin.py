@@ -18,7 +18,7 @@ class UserAdmin(admin.ModelAdmin):
             'fields': ('username', 'email', 'date_joined'),
         }),
         ('Tuirer', {
-            'fields': ('following', ),
+            'fields': ('following', 'followers'),
             'description': 'Coisas relacionadas ao nosso sistema',
         })
     )

@@ -5,3 +5,12 @@ from django.db import models
 class User(AbstractUser):
     picture = models.ImageField('Foto de perfil', default='img/blank-pic.png')
     following = models.ManyToManyField('self', blank=True)
+    followers = models.ManyToManyField('self', blank=True)
+
+    @property
+    def following_count(self):
+        return self.following.count()
+    
+    @property
+    def followers_count(self):
+        return self.followers.count()

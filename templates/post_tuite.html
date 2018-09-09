@@ -2,36 +2,39 @@
 {% load widget_tweaks %}
 
 {% block body %}
+    <div class="post-tuite">
+        <div class="post-tuite__title">Postar tuite</div>
 
-    {% if form.errors %}
-        {% for error in form.non_field_errors %}
-            <p> {{ error }} </p>
-        {% endfor %}
-    {% endif %}
-
-    {% if messages %}
-        {% for message in messages %}
-            <p style="background-color: green" class="message">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+        {% if form.errors %}
+            {% for error in form.non_field_errors %}
+                <p> {{ error }} </p>
+            {% endfor %}
+        {% endif %}
     
-    <form method="POST">
-        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="background-color: green" class="message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        <form class="post-tuite-form" method="POST">
+            {% csrf_token %}
+    
+            {% for field in form %}
+                <div>
+                    {% if not field.name == 'author' %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {% endif %}
+        
+                    {% render_field field class="post-tuite-field" placeholder=field.label autofocus=True %}
+                    <p>{{ field.help_text }}</p>
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            
+            <input class="button" type="submit" value="Postar tuite">
+        </form>
 
-        {% for field in form %}
-            {% if not field.name == 'author' %}
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {% endif %}
-
-            {% render_field field class="post-tuite-field" placeholder=field.label autofocus=True %}
-            <p>{{ field.help_text }}</p>
-            {{ field.errors }}
-        {% endfor %}
-
-        <!-- {{ form.as_p }} -->
-        <!-- <input name="content" placeholder="o que você está pensando?"> -->
-        <input type="submit" value="Postar tuite">
-    </form>
-
+    </div>
 
 {% endblock %}

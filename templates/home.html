@@ -5,7 +5,7 @@
     {% include "includes/message.html" %}
 
     <div class="cards">
-        {% for tuite in tuites %}
+        {% for tuite in tuites|slice:":5" %}
             {% include 'includes/card.html' %}
         {% endfor %}
     </div>

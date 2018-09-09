@@ -9,7 +9,7 @@ from tuites.models import Tuite
 def index(request):
     context = {
         "now": datetime.now(),
-        'tuites': Tuite.objects.all().order_by('-date_created')[:5],
+        'tuites': Tuite.objects.all().order_by('-date_created'),
         # 'tuites': Tuite.objects.search('opa'),
     }
 
