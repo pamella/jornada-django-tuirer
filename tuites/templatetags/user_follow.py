@@ -8,8 +8,8 @@ register = template.Library()
 def follow(context):
     user = context.get('user')
     profile = context.get('profile')
-    user_has_followed = profile.following.filter(pk=user.pk).exists()
-
+    user_has_followed = profile.following.filter(pk=profile.pk).exists()
+    
     if user_has_followed:
         return 'Seguindo'
     else:
