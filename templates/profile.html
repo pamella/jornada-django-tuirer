@@ -35,8 +35,8 @@
 
         <div class="profile-follow">
 
+            <p class="title">Seguindo ({{ profile.following_count }})</p>
             {% if profile.following_count > 0 %}
-                <p class="title">Seguindo ({{ profile.following_count }})</p>
                 <div class="follow-list">
                     {% for following in profile.following.all %}
                         <a href="{% url 'users:profile' following.pk %}" class="follow-card">
@@ -47,8 +47,8 @@
                 </div>
             {% endif %}
 
+            <p class="title">Seguidores ({{ profile.followers_count }})</p>
             {% if profile.followers_count > 0 %}
-                <p class="title">Seguidores ({{ profile.followers_count }})</p>
                 <div class="follow-list">
                     {% for follower in profile.followers.all %}
                         <a href="{% url 'users:profile' follower.pk %}" class="follow-card">
